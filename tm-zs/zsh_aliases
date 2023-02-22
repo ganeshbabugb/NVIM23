@@ -1,0 +1,60 @@
+# SHORTCUTS
+alias e='nv'
+alias c='clear'
+alias h='history'
+alias r='source ~/.zshrc'
+
+# BOOKMARKS
+alias dl='cd ~/Downloads && ls -lA'
+alias doc='cd ~/Documents && ls -lA'
+alias tmp='cd ~/Temporary && ls -lA'
+
+# APT GET STUFF
+alias u='sudo apt-get update && sudo apt-get upgrade -y'
+alias up='sudo apt-get update'
+alias ug='sudo apt-get upgrade -y'
+alias i='sudo apt-get install'
+alias alu='apt list --upgradable'
+
+#SYSTEM
+alias free='free -h'
+alias htop='htop -u "$USER"'
+
+#GENERAL
+alias mkdir='mkdir -v'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias ln='ln -iv'
+alias uptime='uptime -p'
+alias rm='rm -i'
+alias rmf='rm -rf'
+
+# GIT STUFF
+alias gs='git status'
+alias gc='git commit -m'
+alias gca='git commit -am'
+alias ga='git add'
+alias gaa='git add .'
+
+#COPY CURRENT DIR
+alias cc='xclip -selection clipboard' #copy to clipboard
+alias cw='pwd | cc'
+
+# DEFAULT
+alias czsh='nv /root/.zshrc'
+alias ctmux='nv /root/.tmux.conf'
+alias android='cd /root/android-studio/bin/  &&  ./studio.sh'
+alias ahmyth='cd /root/AhMyth/AhMyth-Server/ && npx electron ./app --no-sandbox start'
+# alias vscode="sudo code --user-data-dir='/root/.vscode" --no-sandbox"
+alias serve='python3 -m http.server 8080'
+alias joplin='cd /root/.joplin/ && ./joplin --no-sandbox'
+alias tor_host='cat /var/lib/tor/hidden_service/hostname'
+alias bat='batcat'
+alias ll='exa -lah --icons --color automatic --no-user --no-time --git --group-directories-first'
+alias apu='apt-get update'
+
+# DEVELOPMENT
+alias n='nnn -deo'
+alias timer='echo "Timer started. Stop with Ctrl-D." && date "+%a, %d %b %H:%M:%S" && time cat && date "+%a, %d %b %H:%M:%S"'
+
+# TMUX
