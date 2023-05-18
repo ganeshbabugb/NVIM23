@@ -46,6 +46,7 @@ dashboard.section.buttons.val = {
 	-- dashboard.button("B", "  Browse", "<cmd>NeoTreeShowToggle <CR>"),
 	dashboard.button("R", "  Recents", "<cmd>Telescope oldfiles <CR>"),
 	dashboard.button("C", "  Config", "<cmd>e /root/.config/GanzNvim <CR>"),
+	dashboard.button("S", "  Sessions", "<cmd>SearchSession<CR>"),
 	dashboard.button("U", "  Update", "<cmd>Lazy <CR>"),
 	dashboard.button("T", "  Terminate", "<cmd>qa <CR>"),
 }

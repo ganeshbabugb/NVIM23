@@ -32,6 +32,8 @@ local plugins = {
 
 	-- Commenting with gc
 	"numToStr/Comment.nvim",
+	-- This will comment basesed on cursor location
+	"JoosepAlviste/nvim-ts-context-commentstring",
 
 	-- Vs-code like icons
 	"nvim-tree/nvim-web-devicons",
@@ -39,10 +41,11 @@ local plugins = {
 	-- Statusline
 	"nvim-lualine/lualine.nvim",
 
-	-- Fuzzy finding w/ telescope
+	-- Fuzzy finding w/ telescope / telescope-file-browser
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
 	"nvim-telescope/telescope-hop.nvim",
+	"nvim-telescope/telescope-file-browser.nvim",
 
 	-- Autocompletion
 	"hrsh7th/nvim-cmp",
@@ -69,6 +72,20 @@ local plugins = {
 	"jose-elias-alvarez/null-ls.nvim",
 	"jayp0521/mason-null-ls.nvim",
 
+	-- chat-gpt
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("chatgpt").setup()
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	},
+
 	-- treesitter configuration
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -86,7 +103,7 @@ local plugins = {
 
 	-- Git integration
 	"lewis6991/gitsigns.nvim",
-  "tpope/vim-fugitive",
+	"tpope/vim-fugitive",
 
 	--Dashboard
 	"goolord/alpha-nvim",
@@ -171,6 +188,15 @@ local plugins = {
 
 	-- fold functions
 	{ "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
+
+	-- auto save session
+	"rmagatti/auto-session",
+	"rmagatti/session-lens",
+
+	-- calaculate my daily stats
+	"wakatime/vim-wakatime",
+	-- My API
+	--[[ waka_baecdb5c-6ab9-4fe1-bacf-d4ba05154dd6 ]]
 }
 
 local opts = {

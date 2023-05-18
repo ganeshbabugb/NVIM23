@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 -- Neovim API aliases for chatGPT
 --------------------------------------------------------------------------------
-vim.fn.setenv("OPENAI_API_KEY", "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") -- chatGPT environment key
+vim.fn.setenv("OPENAI_API_KEY", "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") -- chatGPT environment key
 
 --------------------------------------------------------------------------------
 -- General Neovim settings and configuration

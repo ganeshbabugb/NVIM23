@@ -10,8 +10,33 @@ if not actions_setup then
 	return
 end
 
+-- Custom functions
+
+local action_state = require("telescope.actions.state")
+
+--- Insert filename into the current buffer and keeping the insert mode.
+actions.insert_name_i = function(prompt_bufnr)
+	local symbol = action_state.get_selected_entry().ordinal
+	actions.close(prompt_bufnr)
+	vim.schedule(function()
+		vim.cmd([[startinsert]])
+		vim.api.nvim_put({ symbol }, "", true, true)
+	end)
+end
+
+--- Insert file path and name into the current buffer and keeping the insert mode.
+actions.insert_name_and_path_i = function(prompt_bufnr)
+	local symbol = action_state.get_selected_entry().value
+	actions.close(prompt_bufnr)
+	vim.schedule(function()
+		vim.cmd([[startinsert]])
+		vim.api.nvim_put({ symbol }, "", true, true)
+	end)
+end
+
 -- configure telescope
 telescope.setup({
+	file_ignore_patterns = { "./node_modules/*", "node_modules", "^node_modules/*", "node_modules/*" },
 	defaults = {
 		prompt_prefix = "  ", --" " 
 		selection_caret = " ", -- " " 
@@ -28,6 +53,8 @@ telescope.setup({
 				-- ["<LeftMouse>"] = actions.select_default,
 				-- ["<ScrollWheelDown>"] = actions.move_selection_next,
 				-- ["<ScrollWheelUp>"] = actions.move_selection_previous,
+				["<C-Y>"] = actions.insert_name_i,
+				["<C-P>"] = actions.insert_name_and_path_i,
 			},
 			n = {
 				["q"] = actions.close,
@@ -35,6 +62,17 @@ telescope.setup({
 		},
 	},
 	extensions = {
+		file_browser = {
+			-- theme = "ivy",
+			hidden = true,
+			mappings = {
+				["i"] = {
+					-- ["<S-M>"] = fb_actions.move,
+					["<C-Y>"] = actions.insert_name_i,
+					["<C-P>"] = actions.insert_name_and_path_i,
+				},
+			},
+		},
 		hop = {
 			-- the shown `keys` are the defaults, no need to set `keys` if defaults work for you ;)
 			keys = {
@@ -98,6 +136,7 @@ telescope.setup({
 
 telescope.load_extension("fzf")
 telescope.load_extension("hop")
+telescope.load_extension("file_browser")
 
 -- alias
 local keymap = vim.keymap.set
@@ -106,12 +145,23 @@ local keymap = vim.keymap.set
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory
 keymap("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>")
 keymap("n", "<leader>fl", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
--- keymap("n", "<leader>fs", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
+keymap("n", "<leader>fs", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
 keymap("n", "<leader>fc", "<cmd>Telescope neoclip<cr>") -- list all copied words
-keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
+keymap("n", "<leader>sb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>") -- list recently used files
 keymap("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>") -- list all digdiagnostics
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+
+--file browser
+-- vim.api.nvim_set_keymap("n", "<space>B", ":Telescope file_browser<cr>", { noremap = true })
+
+-- open file_browser with the path of the current buffer
+vim.api.nvim_set_keymap(
+	"n",
+	"<space>fb",
+	":Telescope file_browser path=%:p:h select_buffer=true<cr>",
+	{ noremap = true }
+)
 
 -- Git Mapings
 
@@ -130,9 +180,10 @@ keymap("n", "<leader>ft", function()
 	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 		winblend = 10,
 		previewer = false,
+		file_ignore_patterns = { "node_modules/*" },
 	}))
 end)
 
-keymap("n", "<leader>fs", function()
-	require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
-end)
+-- keymap("n", "<leader>fs", function()
+-- require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
+-- end)

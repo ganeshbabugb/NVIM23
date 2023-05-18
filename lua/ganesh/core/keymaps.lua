@@ -164,6 +164,8 @@ keymap("n", "<leader>e", ":NvimTreeFocus<cr>", opts) -- focous
 keymap("n", "<Leader>lf", ":lua vim.lsp.buf.format({ timeout_ms = 2000 })<CR>", opts) --complete file
 keymap("v", "<Leader>lF", ":lua vim.lsp.buf.range_formatting()<CR>", opts) --only for selected range
 
+-- REST API
+keymap("n", "<leader>o", ":RestNvim<cr>", opts)
 -- Run-code (Automatically)
 -- I use this for C, C++, JAVA, PYTHON
 -- keymap("n", "<leader>r", ":RunCode<CR>")

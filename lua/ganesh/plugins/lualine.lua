@@ -32,4 +32,6 @@ lualine.setup({
 	options = {
 		theme = lualine_nightfly,
 	},
+	-- 𝓢
+	sections = { lualine_c = { require("auto-session.lib").current_session_name } },
 })
