@@ -38,11 +38,22 @@ keymap("v", "p", '"_dP', opts)
 -- keymap("v", "y", "myy`y", opts)
 -- keymap("v", "Y", "myY`y", opts)
 
+-- Open the file under the cursor with the default file handler for that file
+-- type (e.g., Firefox for `http` links, etc.)
+keymap("n", "gx", [[:call joosep#open#open_url_under_cursor()<cr>]], opts)
+
+-- Search & replace word under cursor
+keymap("n", "<leader>sr", ":%s/\\<<c-r><c-w>\\>/", opts)
+
 -- Move cursor
 keymap("n", "j", "gj", opts)
 keymap("v", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
 keymap("v", "k", "gk", opts)
+
+-- Fastest scrolling
+keymap("n", "<c-e>", "3<c-e>", opts)
+keymap("n", "<c-y>", "3<c-y>", opts)
 
 -- Center cursor when scrolling
 keymap("n", "<C-d>", "<C-d>zz", opts)

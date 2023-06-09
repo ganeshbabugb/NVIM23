@@ -49,9 +49,9 @@ local on_attach = function(client, bufnr)
 		-- rename file and update imports
 		keymap.set("n", "<leader>rf", "<cmd>TypescriptRenameFile<CR>")
 		-- organize imports (not in youtube nvim video)
-		keymap.set("n", "<leader>oi", ":cmd>TypescriptOrganizeImports<CR>")
+		keymap.set("n", "<leader>oi", "<cmd>TypescriptOrganizeImports<CR>")
 		-- remove unused variables (not in youtube nvim video)
-		keymap.set("n", "<leader>ru", ":cmd>TypescriptRemoveUnused<CR>")
+		keymap.set("n", "<leader>ru", "<cmd>TypescriptRemoveUnused<CR>")
 		-- below this two are not working for me!
 		-- keymap.set("n", "<leader>ai", ":cmd>TypescriptAddMissingImports<CR>")
 		-- keymap.set("n", "<leader>aa", ":cmd>TypescriptFixAll<CR>")

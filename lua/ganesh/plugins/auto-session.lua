@@ -9,10 +9,14 @@ if not session_lens_setup then
 end
 
 session.setup({
-	-- log_level = "error",
-	-- auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+	log_level = "error",
+	--IGNORE DIRECTORIES
+	auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
+	--AUTO SAVE LOCATION
+	auto_session_root_dir = "~/.vim/new-sessions/",
 	-- IT PREVENT THE AUTO LOAD SESSION WHEN OPENING A NEOVIM
 	auto_restore_enabled = false,
+	-- auto_session_enable_last_session= true
 })
 
 session_lens.setup({

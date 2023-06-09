@@ -194,7 +194,7 @@ local plugins = {
 	"rmagatti/session-lens",
 
 	-- calaculate my daily stats
-	"wakatime/vim-wakatime",
+	-- "wakatime/vim-wakatime",
 	-- My API
 	--[[ waka_baecdb5c-6ab9-4fe1-bacf-d4ba05154dd6 ]]
 }
