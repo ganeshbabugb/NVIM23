@@ -128,7 +128,7 @@ local plugins = {
 	"AckslD/nvim-neoclip.lua",
 
 	-- Fidget for better loading UI
-	"j-hui/fidget.nvim",
+	{ "j-hui/fidget.nvim", tag = "legacy" },
 
 	-- This is for practicing vim
 	"ThePrimeagen/vim-be-good",
