@@ -30,6 +30,10 @@ null_ls.setup({
 				return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
 			end,
 		}),
+		--Python
+		diagnostics.mypy,
+		diagnostics.ruff,
+		formatting.black,
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)

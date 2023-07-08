@@ -104,7 +104,7 @@ typescript.setup({
 })
 
 -- list of servers to call
-local servers = { "html", "cssls", "clangd", "html", "bashls" }
+local servers = { "html", "cssls", "clangd", "html", "bashls", "pyright" }
 
 -- setup tailwindcss
 lspconfig["tailwindcss"].setup({
